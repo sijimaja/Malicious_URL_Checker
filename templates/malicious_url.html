@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malicious URL Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff7e6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            text-align: center;
+        }
+        h2 {
+            color: #ff8c00;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            font-size: 18px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px;
+            background-color: #ff8c00;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover, button:focus {
+            background-color: #e67e00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.5);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(255, 140, 0, 0.5);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5">Malicious URL Detector</h2>
+    <form method="POST" action="/malicious_url">
+        <div class="form-group">
+            <input type="text" id="url" name="url" placeholder="Enter URL here..." required>
+            <button type="submit">Check URL</button>
+        </div>
+
+    </form>
+
+    {% if result %}
+        <div class="mt-4">
+            <h3>Result: {{ result }}</h3>
+            <p><strong>URL:</strong> {{ url }}</p>
+        </div>
+    {% endif %}
+    <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+</body>
+</html>
